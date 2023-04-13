@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/tum-dev/calendar-proxy/internal"
+	"github.com/sebiio/calendar-proxy/internal"
 	"log"
 )
 

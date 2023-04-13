@@ -1,4 +1,4 @@
-module github.com/tum-dev/calendar-proxy
+module github.com/sebiio/calendar-proxy
 
 go 1.19
 

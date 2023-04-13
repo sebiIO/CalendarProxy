@@ -1,15 +1,4 @@
 {
-  "Tutorübungen": "TÜ",
-  "Grundlagen": "G",
-  "Introduction": "I",
-  "Datenbanken": "DB",
-  "Zentralübungen": "ZÜ",
-  "Zentralübung": "ZÜ",
-  "Vertiefungsübungen": "VÜ",
-  "Übungen": "Ü",
-  "Übung": "Ü",
-  "Exercise": "EX",
-  "Exercises": "EX",
   "Software Engineering für betriebliche Anwendungen - Bachelorkurs": "SEBA",
   "Software Engineering für betriebliche Anwendungen - Masterkurs: Web Application Engineering": "SEBA",
   "Betriebswirtschaftslehre": "BWL",
@@ -59,5 +48,16 @@
   " to Deep Learning": "2DL",
   "Security Engineering": "SecE",
   "Peer-to-Peer-Systeme und Sicherheit": "P2PSec",
-  "Requirements Engineering": "ReqE"
+  "Requirements Engineering": "ReqE",
+  "Tutorübungen": "TÜ",
+  "Grundlagen": "G",
+  "Introduction": "I",
+  "Datenbanken": "DB",
+  "Zentralübungen": "ZÜ",
+  "Zentralübung": "ZÜ",
+  "Vertiefungsübungen": "VÜ",
+  "Übungen": "Ü",
+  "Übung": "Ü",
+  "Exercise": "EX",
+  "Exercises": "EX"
 }
