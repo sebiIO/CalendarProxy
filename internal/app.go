@@ -4,6 +4,7 @@ import (
 	"embed"
 	"encoding/json"
 	"fmt"
+	"github.com/iancoleman/orderedmap"
 	"io"
 	"net/http"
 	"regexp"
@@ -25,12 +26,15 @@ var static embed.FS
 type App struct {
 	engine *gin.Engine
 
-	courseReplacements   map[string]string
+	courseReplacements   *orderedmap.OrderedMap
 	buildingReplacements map[string]string
 }
 
 func newApp() (*App, error) {
 	a := App{}
+
+	a.courseReplacements = orderedmap.New()
+
 	err := json.Unmarshal([]byte(coursesJson), &a.courseReplacements)
 	if err != nil {
 		return nil, err
@@ -200,9 +204,11 @@ func (a *App) cleanEvent(event *ics.VEvent) {
 	event.SetDescription(description)
 
 	// set title on summary:
-	for k, v := range a.courseReplacements {
-		summary = strings.ReplaceAll(summary, k, v)
+	for _, k := range a.courseReplacements.Keys() {
+		v, _ := a.courseReplacements.Get(k)
+		summary = strings.ReplaceAll(summary, k, v.(string))
 	}
+
 	event.SetSummary(summary)
 	switch event.GetProperty(ics.ComponentPropertyStatus).Value {
 	case "CONFIRMED":
