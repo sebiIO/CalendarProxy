@@ -136,6 +136,12 @@ var reLoc = regexp.MustCompile(" ?(München|Garching|Weihenstephan).+")
 // Matches repeated whitespaces
 var reSpace = regexp.MustCompile(`\s\s+`)
 
+// remove weird comma stuff on the end e.g. " , "
+var reCommaEnd = regexp.MustCompile(`\s*?,\s*`)
+
+// remove " - Gruppen Mo, Di" from TÜs
+var reGroups = regexp.MustCompile(`(\s?-\s?Gruppen(.*))`)
+
 var unneeded = []string{
 	"Standardgruppe",
 	"PR",
@@ -172,6 +178,9 @@ func (a *App) cleanEvent(event *ics.VEvent) {
 	//remove location and teacher from language course title
 	summary = reLoc.ReplaceAllString(summary, "")
 	summary = reSpace.ReplaceAllString(summary, "")
+	summary = reGroups.ReplaceAllString(summary, "")
+	summary = reCommaEnd.ReplaceAllString(summary, "")
+
 	for _, replace := range unneeded {
 		summary = strings.ReplaceAll(summary, replace, "")
 	}
