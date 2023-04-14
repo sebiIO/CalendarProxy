@@ -181,13 +181,15 @@ func (a *App) cleanEvent(event *ics.VEvent) {
 	summary = reTag.ReplaceAllString(summary, "")
 	//remove location and teacher from language course title
 	summary = reLoc.ReplaceAllString(summary, "")
-	summary = reSpace.ReplaceAllString(summary, "")
+	summary = reSpace.ReplaceAllString(summary, " ")
 	summary = reGroups.ReplaceAllString(summary, "")
 	summary = reCommaEnd.ReplaceAllString(summary, "")
 
 	for _, replace := range unneeded {
 		summary = strings.ReplaceAll(summary, replace, "")
 	}
+
+	summary = strings.TrimSpace(summary)
 
 	event.SetSummary(summary)
 
